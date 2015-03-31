@@ -8,7 +8,7 @@ import com.twitter.util.{Await, Future => TwitterFuture, Promise => TwitterPromi
 import net.fehmicansaglam.bson.BsonDocument
 import net.fehmicansaglam.bson.BsonDsl._
 import net.fehmicansaglam.bson.Implicits._
-import net.fehmicansaglam.tepkin.MongoClient
+import net.fehmicansaglam.tepkin.{MongoClientUri, MongoClient}
 import org.jboss.netty.handler.codec.http._
 import org.joda.time.DateTime
 
@@ -30,7 +30,7 @@ object Server {
 class Hello extends Service[HttpRequest, HttpResponse] {
   val uri = Properties.envOrElse("MONGOLAB_URI", "")
   val client = MongoClient(uri)
-  val db = client("tepkin")
+  val db = client(MongoClientUri(uri).database.get)
   val collection = db("tepkin")
 
   import client.ec
