@@ -29,7 +29,7 @@ object Server {
 
 class Hello extends Service[HttpRequest, HttpResponse] {
   val uri = Properties.envOrElse("MONGOLAB_URI", "")
-  val client = MongoClient(uri + "?authMechanism=MONGODB_CR")
+  val client = MongoClient(uri + "?authMechanism=MONGODB-CR")
   val db = client(MongoClientUri(uri).database.get)
   val collection = db("tepkin")
 
