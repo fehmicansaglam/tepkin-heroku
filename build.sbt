@@ -26,9 +26,7 @@ scalacOptions := Seq(
   "-Ywarn-unused-import" // 2.11 only
 )
   
-resolvers += "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
-
 libraryDependencies ++= Seq(
   "com.twitter" %% "finagle-http" % "6.24.0",
-  "net.fehmicansaglam" %% "tepkin" % "0.2-SNAPSHOT"
+  "net.fehmicansaglam" %% "tepkin" % "0.4"
 )
